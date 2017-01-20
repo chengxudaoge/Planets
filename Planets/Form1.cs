@@ -48,5 +48,11 @@ namespace Planets
             brush2.Dispose();
             graphics.Dispose();
         }
+
+        private void showdialog(object sender, EventArgs e)
+        {
+            MessageBox.Show("The calculations are complete", "My Application",
+                     MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+        }
     }
 }
