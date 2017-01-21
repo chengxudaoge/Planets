@@ -13,6 +13,9 @@ namespace Planets
     public partial class planetcomponent : UserControl
     {
         private Point MouseDownLocation;
+        private int mass=1;
+        private int xvelocity = 0;
+        private int yvelocity = 0;
         public planetcomponent()
         {
             InitializeComponent();
@@ -49,9 +52,21 @@ namespace Planets
 
         private void showmydialog(object sender, EventArgs e)
         {
-            MessageBox.Show("MineMineMine", "My Application",
-         MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            // MessageBox.Show("MineMineMine", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            planetcomponent theguy = (planetcomponent)sender;
+            
+            Form2 mydialog = new Planets.Form2(theguy.Name, theguy.Location.X,theguy.Location.Y,theguy.xvelocity,theguy.yvelocity,theguy.mass);
+            if (mydialog.ShowDialog() == DialogResult.OK)
+            {
+                //set values;
+                theguy.Name = mydialog.pcname;
+                theguy.mass = mydialog.pcmass;
+                theguy.xvelocity = mydialog.pcxvel;
+                theguy.yvelocity = mydialog.pcyvel;
+                theguy.Location = new Point(mydialog.pcxloc, mydialog.pcyloc);
 
+            }
         }
+            
     }
 }

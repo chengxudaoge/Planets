@@ -82,7 +82,7 @@ namespace Planets
         private void addPlanet_Click(object sender, EventArgs e)
         {
             planetcomponent pc = new planetcomponent();
-            pc.Name = "bob";
+            //pc.Name = "bob";
             pc.Location = new Point(50, 50);
             this.Controls.Add(pc);
 
