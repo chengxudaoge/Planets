@@ -34,10 +34,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Planets.Properties.Resources.planet;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Name = "planetcomponent";
-            this.Size = new System.Drawing.Size(106, 103);
+            this.Size = new System.Drawing.Size(20, 20);
+            this.Click += new System.EventHandler(this.showdialog);
             this.ResumeLayout(false);
 
         }

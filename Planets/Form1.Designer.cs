@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.components = new System.ComponentModel.Container();
             this.start = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.planetcomponent1 = new Planets.planetcomponent();
             this.SuspendLayout();
             // 
@@ -43,15 +44,18 @@
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.start_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // planetcomponent1
             // 
-            this.planetcomponent1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("planetcomponent1.BackgroundImage")));
-            this.planetcomponent1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.planetcomponent1.Location = new System.Drawing.Point(128, 31);
+            this.planetcomponent1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.planetcomponent1.Location = new System.Drawing.Point(103, 42);
             this.planetcomponent1.Name = "planetcomponent1";
-            this.planetcomponent1.Size = new System.Drawing.Size(106, 103);
+            this.planetcomponent1.Size = new System.Drawing.Size(20, 20);
             this.planetcomponent1.TabIndex = 1;
-            this.planetcomponent1.Click += new System.EventHandler(this.showdialog);
             // 
             // Form1
             // 
@@ -69,6 +73,7 @@
         #endregion
 
         private System.Windows.Forms.Button start;
+        private System.Windows.Forms.Timer timer1;
         private planetcomponent planetcomponent1;
     }
 }

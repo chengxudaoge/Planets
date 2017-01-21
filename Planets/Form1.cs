@@ -13,6 +13,8 @@ namespace Planets
 {
     public partial class Form1 : Form
     {
+        double theta = 0;
+        int x = 0, y = 0;
         public Form1()
         {
             InitializeComponent();
@@ -53,6 +55,15 @@ namespace Planets
         {
             MessageBox.Show("The calculations are complete", "My Application",
                      MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DrawIt(x, y, Color.White);
+            x = (int)(100 * Math.Cos(theta) + 90);
+            y = (int)(100 * Math.Sin(theta) + 90);
+            DrawIt(x, y, Color.Green);
+            theta = theta + 10 * Math.PI / 180.0;
         }
     }
 }
