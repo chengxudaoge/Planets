@@ -59,11 +59,14 @@ namespace Planets
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DrawIt(x, y, Color.White);
+            //DrawIt(x, y, Color.White);
             x = (int)(100 * Math.Cos(theta) + 90);
             y = (int)(100 * Math.Sin(theta) + 90);
-            DrawIt(x, y, Color.Green);
+            //DrawIt(x, y, Color.Green);
             theta = theta + 10 * Math.PI / 180.0;
+
+            planetcomponent planet = this.Controls.Find("planetcomponent1", true).FirstOrDefault() as planetcomponent;
+            planet.Location= new Point(x, y);
         }
     }
 }
