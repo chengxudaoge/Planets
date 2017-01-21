@@ -32,6 +32,7 @@
             this.start = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.planetcomponent1 = new Planets.planetcomponent();
+            this.addPlanet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
@@ -40,7 +41,7 @@
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(75, 23);
             this.start.TabIndex = 0;
-            this.start.Text = "Start";
+            this.start.Text = "Start/Stop";
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.start_Click);
             // 
@@ -59,11 +60,22 @@
             this.planetcomponent1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.planet_MouseDown);
             this.planetcomponent1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planet_MouseMove);
             // 
+            // addPlanet
+            // 
+            this.addPlanet.Location = new System.Drawing.Point(197, 208);
+            this.addPlanet.Name = "addPlanet";
+            this.addPlanet.Size = new System.Drawing.Size(75, 23);
+            this.addPlanet.TabIndex = 3;
+            this.addPlanet.Text = "Add Planet";
+            this.addPlanet.UseVisualStyleBackColor = true;
+            this.addPlanet.Click += new System.EventHandler(this.addPlanet_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.addPlanet);
             this.Controls.Add(this.planetcomponent1);
             this.Controls.Add(this.start);
             this.Name = "Form1";
@@ -77,6 +89,7 @@
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Timer timer1;
         private planetcomponent planetcomponent1;
+        private System.Windows.Forms.Button addPlanet;
     }
 }
 

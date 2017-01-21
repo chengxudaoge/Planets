@@ -37,7 +37,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Name = "planetcomponent";
             this.Size = new System.Drawing.Size(20, 20);
-            this.Click += new System.EventHandler(this.showdialog);
+            this.DoubleClick += new System.EventHandler(this.showmydialog);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.planet_MyMouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planet_MyMouseMove);
             this.ResumeLayout(false);
 
         }

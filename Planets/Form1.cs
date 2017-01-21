@@ -79,6 +79,15 @@ namespace Planets
                      MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
         }
 
+        private void addPlanet_Click(object sender, EventArgs e)
+        {
+            planetcomponent pc = new planetcomponent();
+            pc.Name = "bob";
+            pc.Location = new Point(50, 50);
+            this.Controls.Add(pc);
+
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             //DrawIt(x, y, Color.White);

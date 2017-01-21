@@ -12,6 +12,7 @@ namespace Planets
 {
     public partial class planetcomponent : UserControl
     {
+        private Point MouseDownLocation;
         public planetcomponent()
         {
             InitializeComponent();
@@ -29,9 +30,27 @@ namespace Planets
             brush2.Dispose();
 
         }
-
-        private void showdialog(object sender, EventArgs e)
+        private void planet_MyMouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void planet_MyMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                this.Left = e.X + this.Left - MouseDownLocation.X;
+                this.Top = e.Y + this.Top - MouseDownLocation.Y;
+            }
+        }
+
+        private void showmydialog(object sender, EventArgs e)
+        {
+            MessageBox.Show("MineMineMine", "My Application",
+         MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
 
         }
     }
