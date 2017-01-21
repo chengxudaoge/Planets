@@ -56,6 +56,8 @@
             this.planetcomponent1.Name = "planetcomponent1";
             this.planetcomponent1.Size = new System.Drawing.Size(20, 20);
             this.planetcomponent1.TabIndex = 1;
+            this.planetcomponent1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.planet_MouseDown);
+            this.planetcomponent1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planet_MouseMove);
             // 
             // Form1
             // 

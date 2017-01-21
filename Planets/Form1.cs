@@ -19,20 +19,42 @@ namespace Planets
         {
             InitializeComponent();
         }
+        private Point MouseDownLocation;
 
+
+        private void planet_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void planet_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                planetcomponent1.Left = e.X + planetcomponent1.Left - MouseDownLocation.X;
+                planetcomponent1.Top = e.Y + planetcomponent1.Top - MouseDownLocation.Y;
+            }
+        }
         private void start_Click(object sender, EventArgs e)
         {
-            double theta = 0;
-            int x=0, y=0;
-            while (true)
-            {
-                DrawIt(x, y, Color.White);
-                x = (int)(100*Math.Cos(theta)+90);
-                y = (int)(100*Math.Sin(theta)+90);
-                DrawIt(x, y,Color.Green);
-                theta = theta + 10*Math.PI / 180.0;
-                Thread.Sleep(100);
-            }
+            if (timer1.Enabled == true)
+                timer1.Enabled = false;
+            else
+                timer1.Enabled = true;
+            //double theta = 0;
+            //int x=0, y=0;
+            //while (true)
+            //{
+            //    DrawIt(x, y, Color.White);
+            //    x = (int)(100*Math.Cos(theta)+90);
+            //    y = (int)(100*Math.Sin(theta)+90);
+            //    DrawIt(x, y,Color.Green);
+            //    theta = theta + 10*Math.PI / 180.0;
+            //    Thread.Sleep(100);
+            //}
         }
 
         private void DrawIt(int x, int y, Color color)
