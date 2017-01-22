@@ -32,6 +32,7 @@
             this.start = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.addPlanet = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // start
@@ -46,7 +47,7 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // addPlanet
@@ -58,6 +59,10 @@
             this.addPlanet.Text = "Add Planet";
             this.addPlanet.UseVisualStyleBackColor = true;
             this.addPlanet.Click += new System.EventHandler(this.addPlanet_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -77,6 +82,7 @@
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button addPlanet;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
