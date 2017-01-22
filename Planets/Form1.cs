@@ -15,6 +15,9 @@ namespace Planets
     {
         double theta = 0;
         int x = 0, y = 0;
+
+        string[] planetlist = new string[10];
+        int planetcount = 0;
         public Form1()
         {
             InitializeComponent();
@@ -30,14 +33,14 @@ namespace Planets
             }
         }
 
-        private void planet_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                planetcomponent1.Left = e.X + planetcomponent1.Left - MouseDownLocation.X;
-                planetcomponent1.Top = e.Y + planetcomponent1.Top - MouseDownLocation.Y;
-            }
-        }
+        //private void planet_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    if (e.Button == System.Windows.Forms.MouseButtons.Left)
+        //    {
+        //        planetcomponent1.Left = e.X + planetcomponent1.Left - MouseDownLocation.X;
+        //        planetcomponent1.Top = e.Y + planetcomponent1.Top - MouseDownLocation.Y;
+        //    }
+        //}
         private void start_Click(object sender, EventArgs e)
         {
             if (timer1.Enabled == true)
@@ -82,10 +85,13 @@ namespace Planets
         private void addPlanet_Click(object sender, EventArgs e)
         {
             planetcomponent pc = new planetcomponent();
-            //pc.Name = "bob";
             pc.Location = new Point(50, 50);
             this.Controls.Add(pc);
-
+            pc.Name = "Planet" + planetcount.ToString();
+            pc.showmydialog(pc, EventArgs.Empty);
+            //you need to update the list if name is changed in the future
+            planetlist[planetcount] = pc.Name;
+            planetcount++;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -95,9 +101,15 @@ namespace Planets
             y = (int)(100 * Math.Sin(theta) + 90);
             //DrawIt(x, y, Color.Green);
             theta = theta + 10 * Math.PI / 180.0;
-
-            planetcomponent planet = this.Controls.Find("planetcomponent1", true).FirstOrDefault() as planetcomponent;
-            planet.Location= new Point(x, y);
+            foreach (string planetname in planetlist)
+            {
+                if (planetname !=null)
+                {
+                    planetcomponent planet = this.Controls.Find(planetname, true).FirstOrDefault() as planetcomponent;
+                    //planet.Location = new Point(x , y);
+                    planet.Location = new Point(x + planet.mass, y + planet.mass);
+                }
+            }
         }
     }
 }
