@@ -127,10 +127,11 @@ namespace Planets
                     {
                         double ox = 0, oy = 0;
                         double omass;
-                        
-                        if (otherplanetname !=null && !String.Equals (planetname,otherplanetname))
+
+                        if (otherplanetname != null && !String.Equals(planetname, otherplanetname) && !String.Equals(planetname, "Planet1"))
+                            //if (otherplanetname != null && !String.Equals(planetname, otherplanetname))
                             {
-                            planetcomponent otherplanet = this.Controls.Find(otherplanetname, true).FirstOrDefault() as planetcomponent;
+                                planetcomponent otherplanet = this.Controls.Find(otherplanetname, true).FirstOrDefault() as planetcomponent;
                             ox = otherplanet.Location.X/100.0;
                             oy = otherplanet.Location.Y/100.0;
                             omass = otherplanet.mass;

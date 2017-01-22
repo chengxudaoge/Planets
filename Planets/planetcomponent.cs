@@ -13,6 +13,7 @@ namespace Planets
     public partial class planetcomponent : UserControl
     {
         private Point MouseDownLocation;
+        private bool DisableName = false;
         public int mass=1;
         public int xvelocity = 0;
         public int yvelocity = 0;
@@ -20,6 +21,14 @@ namespace Planets
         {
             InitializeComponent();
         }
+
+       public bool NameDisabled
+        {
+            get { return DisableName; }
+            set { DisableName = value; }
+        }
+
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             int x = 0,y = 0;
@@ -56,6 +65,8 @@ namespace Planets
             planetcomponent theguy = (planetcomponent)sender;
             
             Form2 mydialog = new Planets.Form2(theguy.Name, theguy.Location.X,theguy.Location.Y,theguy.xvelocity,theguy.yvelocity,theguy.mass);
+            TextBox namebox= mydialog.Controls.Find("thename", true).FirstOrDefault() as TextBox;
+            if (NameDisabled) namebox.Enabled = false;
             if (mydialog.ShowDialog() == DialogResult.OK)
             {
                 //set values              
@@ -66,6 +77,7 @@ namespace Planets
                 theguy.Location = new Point(mydialog.pcxloc, mydialog.pcyloc);
 
             }
+            NameDisabled = true;  
         }
             
     }
