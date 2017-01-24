@@ -13,13 +13,13 @@ namespace Planets
     public partial class Form2 : Form
     {
         public string pcname;
-        public int pcxloc;
-        public int pcyloc;
-        public int pcxvel;
-        public int pcyvel;
-        public int pcmass;
+        public double pcxloc;
+        public double pcyloc;
+        public double pcxvel;
+        public double pcyvel;
+        public double pcmass;
 
-        public Form2(string name, int thelocx, int thelocy, int thevelx, int thevely, int themass)
+        public Form2(string name, double thelocx, double thelocy, double thevelx, double thevely, double themass)
         {
             InitializeComponent();
             thename.Text = name;
@@ -32,11 +32,11 @@ namespace Planets
 
         private void okbutt_Click(object sender, EventArgs e)
         {
-            pcmass = Convert.ToInt32(mass.Text);
-            pcyvel = Convert.ToInt32(yvel.Text);
-            pcxvel = Convert.ToInt32(xvel.Text);
-            pcyloc = Convert.ToInt32(yloc.Text);
-            pcxloc = Convert.ToInt32(xloc.Text);
+            pcmass = Convert.ToDouble(mass.Text);
+            pcyvel = Convert.ToDouble(yvel.Text);
+            pcxvel = Convert.ToDouble(xvel.Text);
+            pcyloc = Convert.ToDouble(yloc.Text);
+            pcxloc = Convert.ToDouble(xloc.Text);
             pcname = thename.Text;
         }
     }

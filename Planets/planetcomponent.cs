@@ -14,9 +14,9 @@ namespace Planets
     {
         private Point MouseDownLocation;
         private bool DisableName = false;
-        public int mass=1;
-        public int xvelocity = 0;
-        public int yvelocity = 0;
+        public double mass=1;
+        public double xvelocity = 0;
+        public double yvelocity = 0;
         public planetcomponent()
         {
             InitializeComponent();
@@ -74,11 +74,12 @@ namespace Planets
                 theguy.mass = mydialog.pcmass;
                 theguy.xvelocity = mydialog.pcxvel;
                 theguy.yvelocity = mydialog.pcyvel;
-                theguy.Location = new Point(mydialog.pcxloc, mydialog.pcyloc);
+                theguy.Location = new Point(Convert.ToInt32(mydialog.pcxloc), Convert.ToInt32(mydialog.pcyloc));
+                theguy.thelabel.Text = mydialog.pcname;
+                theguy.thelabel.BackColor = Color.Transparent;
 
             }
             NameDisabled = true;  
         }
-            
     }
 }

@@ -17,6 +17,9 @@ namespace Planets
 
         string[] planetlist = new string[10];
         int planetcount = 0;
+        double theinterval = 0.1;
+        double thetime = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -108,44 +111,47 @@ namespace Planets
             //y = (int)(100 * Math.Sin(theta) + 90);
             ////DrawIt(x, y, Color.Green);
             //theta = theta + 10 * Math.PI / 180.0;
+            theinterval = Convert.ToDouble(interval.Text);
+            double thescale = Convert.ToDouble(scale.Text);
+           thetime = thetime + theinterval;
+            time.Text = thetime.ToString();
             foreach (string planetname in planetlist)
             {
                 double x = 0, y = 0;
                 double vx, vy;
                 double mass;
-                double theinterval=0.1;
                 if (planetname !=null)
                 {
                     planetcomponent planet = this.Controls.Find(planetname, true).FirstOrDefault() as planetcomponent;
                     //planet.Location = new Point(x , y);
-                    x=planet.Location.X/100.0;
-                    y = planet.Location.Y/100.0;
-                    vx = planet.xvelocity/100.0;
-                    vy = planet.yvelocity/100.0;
+                    x=planet.Location.X*thescale;
+                    y = planet.Location.Y*thescale;
+                    vx = planet.xvelocity;
+                    vy = planet.yvelocity;
                     mass = planet.mass;
                     foreach (string otherplanetname in planetlist)
                     {
                         double ox = 0, oy = 0;
                         double omass;
 
-                        if (otherplanetname != null && !String.Equals(planetname, otherplanetname) && !String.Equals(planetname, "Planet1"))
+                        if (otherplanetname != null && !String.Equals(planetname, otherplanetname) )
                             //if (otherplanetname != null && !String.Equals(planetname, otherplanetname))
                             {
                                 planetcomponent otherplanet = this.Controls.Find(otherplanetname, true).FirstOrDefault() as planetcomponent;
-                            ox = otherplanet.Location.X/100.0;
-                            oy = otherplanet.Location.Y/100.0;
+                            ox = otherplanet.Location.X*thescale;
+                            oy = otherplanet.Location.Y*thescale;
                             omass = otherplanet.mass;
                             double r = Math.Sqrt((ox - x) * (ox - x) + (oy - y) * (oy - y));
                             double r3 = Math.Pow(r, 3);
-                            double ax = -(mass * omass) * (x - ox) / r3;
-                            double ay = -(mass * omass) * (y - oy) / r3;
+                            double ax = -omass * 6.67408E-11 * (x - ox) / r3;
+                            double ay = -omass * 6.67408E-11 * (y - oy) / r3;
                             double nvx = vx + ax * theinterval;
                             double nvy = vy + ay * theinterval;
                             double nx = x + nvx * theinterval;
                             double ny = y + nvy * theinterval;
-                            planet.Location = new Point(Convert.ToInt32(nx * 100), Convert.ToInt32(ny * 100));
-                            planet.xvelocity = Convert.ToInt32(nvx * 100);
-                            planet.yvelocity = Convert.ToInt32(nvy * 100);
+                            planet.Location = new Point(Convert.ToInt32(nx/thescale), Convert.ToInt32(ny/thescale));
+                            planet.xvelocity = Convert.ToInt32(nvx);
+                            planet.yvelocity = Convert.ToInt32(nvy);
                         }
                     }
                 }
