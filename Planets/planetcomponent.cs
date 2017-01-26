@@ -17,6 +17,8 @@ namespace Planets
         public double mass=1;
         public double xvelocity = 0;
         public double yvelocity = 0;
+        public double xlocation = 0;
+        public double ylocation = 0;
         public planetcomponent()
         {
             InitializeComponent();
@@ -64,9 +66,12 @@ namespace Planets
             // MessageBox.Show("MineMineMine", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             planetcomponent theguy = (planetcomponent)sender;
             
-            Form2 mydialog = new Planets.Form2(theguy.Name, theguy.Location.X,theguy.Location.Y,theguy.xvelocity,theguy.yvelocity,theguy.mass);
-            TextBox namebox= mydialog.Controls.Find("thename", true).FirstOrDefault() as TextBox;
-            if (NameDisabled) namebox.Enabled = false;
+            Form2 mydialog = new Planets.Form2(theguy.Name, theguy.xlocation,theguy.ylocation,theguy.xvelocity,theguy.yvelocity,theguy.mass);
+            TextBox namebox = mydialog.Controls.Find("thename", true).FirstOrDefault() as TextBox;
+            TextBox scalebox = this.Parent.Controls.Find("scale", true).FirstOrDefault() as TextBox;
+
+            double thescale = Convert.ToDouble(scalebox.Text);
+            if (NameDisabled)  namebox.Enabled = false;
             if (mydialog.ShowDialog() == DialogResult.OK)
             {
                 //set values              
@@ -74,7 +79,10 @@ namespace Planets
                 theguy.mass = mydialog.pcmass;
                 theguy.xvelocity = mydialog.pcxvel;
                 theguy.yvelocity = mydialog.pcyvel;
-                theguy.Location = new Point(Convert.ToInt32(mydialog.pcxloc), Convert.ToInt32(mydialog.pcyloc));
+                //                theguy.Location = new Point(Convert.ToInt32(mydialog.pcxloc), Convert.ToInt32(mydialog.pcyloc));
+                theguy.Location=new Point(Convert.ToInt32(mydialog.pcxloc/thescale), Convert.ToInt32(mydialog.pcyloc/thescale));
+                theguy.xlocation = mydialog.pcxloc;
+                theguy.ylocation = mydialog.pcyloc;
                 theguy.thelabel.Text = mydialog.pcname;
                 theguy.thelabel.BackColor = Color.Transparent;
 

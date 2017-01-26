@@ -69,11 +69,11 @@ namespace Planets
             //    50, 100, 150, 150);
             //graphics.DrawEllipse(System.Drawing.Pens.Black, rectangle);
             //graphics.DrawRectangle(System.Drawing.Pens.Red, rectangle);
-            System.Drawing.SolidBrush brush1 = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-            graphics.FillEllipse(brush1, new System.Drawing.Rectangle(50, 50, 100, 100));
+            //System.Drawing.SolidBrush brush1 = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+           // graphics.FillEllipse(brush1, new System.Drawing.Rectangle(50, 50, 100, 100));
             System.Drawing.SolidBrush brush2 = new System.Drawing.SolidBrush(color);
             graphics.FillEllipse(brush2, new System.Drawing.Rectangle(x, y, 20, 20));
-            brush1.Dispose();
+          //  brush1.Dispose();
             brush2.Dispose();
             graphics.Dispose();
         }
@@ -124,8 +124,10 @@ namespace Planets
                 {
                     planetcomponent planet = this.Controls.Find(planetname, true).FirstOrDefault() as planetcomponent;
                     //planet.Location = new Point(x , y);
-                    x=planet.Location.X*thescale;
-                    y = planet.Location.Y*thescale;
+                    //x = planet.Location.X * thescale;
+                    //y = planet.Location.Y * thescale;
+                    x = planet.xlocation;
+                    y = planet.ylocation;
                     vx = planet.xvelocity;
                     vy = planet.yvelocity;
                     mass = planet.mass;
@@ -138,20 +140,20 @@ namespace Planets
                             //if (otherplanetname != null && !String.Equals(planetname, otherplanetname))
                             {
                                 planetcomponent otherplanet = this.Controls.Find(otherplanetname, true).FirstOrDefault() as planetcomponent;
-                            ox = otherplanet.Location.X*thescale;
-                            oy = otherplanet.Location.Y*thescale;
+                            ox = otherplanet.xlocation;
+                            oy = otherplanet.ylocation;
                             omass = otherplanet.mass;
                             double r = Math.Sqrt((ox - x) * (ox - x) + (oy - y) * (oy - y));
                             double r3 = Math.Pow(r, 3);
                             double ax = -omass * 6.67408E-11 * (x - ox) / r3;
                             double ay = -omass * 6.67408E-11 * (y - oy) / r3;
-                            double nvx = vx + ax * theinterval;
-                            double nvy = vy + ay * theinterval;
-                            double nx = x + nvx * theinterval;
-                            double ny = y + nvy * theinterval;
-                            planet.Location = new Point(Convert.ToInt32(nx/thescale), Convert.ToInt32(ny/thescale));
-                            planet.xvelocity = Convert.ToInt32(nvx);
-                            planet.yvelocity = Convert.ToInt32(nvy);
+                            planet.xvelocity = vx + ax * theinterval;
+                            planet.yvelocity = vy + ay * theinterval;
+                            planet.xlocation = x + planet.xvelocity * theinterval;
+                            planet.ylocation = y + planet.yvelocity * theinterval;
+                            planet.Location = new Point(Convert.ToInt32(planet.xlocation/thescale), Convert.ToInt32(planet.ylocation/thescale));
+                            DrawIt(planet.Location.X, planet.Location.Y, Color.Green);
+
                         }
                     }
                 }
