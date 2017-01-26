@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace Planets
 {
@@ -19,10 +21,54 @@ namespace Planets
         int planetcount = 0;
         double theinterval = 0.1;
         double thetime = 0;
+        double thescale = 1;
+
+        public class APlanet
+        {
+            [XmlAttribute("name")]
+            public string Name { get; set; }
+            public double xlocation { get; set; }
+            public double ylocation { get; set; }
+            public double xvelocity { get; set; }
+            public double yvelocity { get; set; }
+            public double mass { get; set; }
+
+        }
+
+        [XmlRoot("info")]
+        public class Info
+        {
+            [XmlArray("planets")]
+            [XmlArrayItem("planet")]
+            public List<APlanet> Planets { get; set; }
+            public double interval { get; set; }
+            public double scale { get; set; }
+        }
 
         public Form1()
         {
             InitializeComponent();
+            List<APlanet> planets;
+            var serializer = new XmlSerializer(typeof(Info));
+            using (var reader = XmlReader.Create("info.xml"))
+            {
+                Info info = (Info)serializer.Deserialize(reader);
+                planets = info.Planets;
+                theinterval = info.interval;
+                thescale = info.scale;
+            }
+            interval.Text = theinterval.ToString();
+            scale.Text = thescale.ToString();
+            foreach (APlanet aplanet in planets)
+            {
+              planetcomponent pc= new planetcomponent(aplanet.mass, aplanet.xlocation, aplanet.ylocation, aplanet.xvelocity, aplanet.yvelocity);
+                pc.Name = aplanet.Name;
+                pc.labelname = pc.Name;
+                pc.Location = new Point(Convert.ToInt32(aplanet.xlocation / thescale) + 200, Convert.ToInt32(aplanet.ylocation / thescale) + 200);
+                planetlist[planetcount] = pc.Name;
+                this.Controls.Add(pc);
+                planetcount++;
+            }
         }
         private Point MouseDownLocation;
 
@@ -87,7 +133,7 @@ namespace Planets
         private void addPlanet_Click(object sender, EventArgs e)
         {
             planetcomponent pc = new planetcomponent();
-            pc.Location = new Point(50, 50);
+            pc.Location = new Point(200, 200);
             this.Controls.Add(pc);
             pc.Name = "Planet" + planetcount.ToString();
             pc.showmydialog(pc, EventArgs.Empty);
@@ -151,7 +197,7 @@ namespace Planets
                             planet.yvelocity = vy + ay * theinterval;
                             planet.xlocation = x + planet.xvelocity * theinterval;
                             planet.ylocation = y + planet.yvelocity * theinterval;
-                            planet.Location = new Point(Convert.ToInt32(planet.xlocation/thescale), Convert.ToInt32(planet.ylocation/thescale));
+                            planet.Location = new Point(Convert.ToInt32(planet.xlocation/thescale)+200, Convert.ToInt32(planet.ylocation/thescale)+200);
                             DrawIt(planet.Location.X, planet.Location.Y, Color.Green);
 
                         }

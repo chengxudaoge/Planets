@@ -13,24 +13,42 @@ namespace Planets
     public partial class planetcomponent : UserControl
     {
         private Point MouseDownLocation;
-        private bool DisableName = false;
+        //private bool NameDisabled = false;
         public double mass=1;
         public double xvelocity = 0;
         public double yvelocity = 0;
         public double xlocation = 0;
         public double ylocation = 0;
+        public string Labelname;
         public planetcomponent()
         {
             InitializeComponent();
         }
-
-       public bool NameDisabled
+        public planetcomponent(double themass, double x, double y, double xvel, double yvel)
         {
-            get { return DisableName; }
-            set { DisableName = value; }
+            InitializeComponent();
+            mass = themass;
+            xlocation = x;
+            ylocation = y;
+            xvelocity = xvel;
+            yvelocity = yvel;
         }
 
-        
+        public bool NameDisabled
+        {
+            get;set;
+        }
+
+        public string labelname
+        {
+            get { return Labelname; }
+            set {
+                Labelname = value;               
+                thelabel.Text = Labelname;
+                }
+        }
+
+
         protected override void OnPaint(PaintEventArgs e)
         {
             int x = 0,y = 0;
@@ -80,7 +98,7 @@ namespace Planets
                 theguy.xvelocity = mydialog.pcxvel;
                 theguy.yvelocity = mydialog.pcyvel;
                 //                theguy.Location = new Point(Convert.ToInt32(mydialog.pcxloc), Convert.ToInt32(mydialog.pcyloc));
-                theguy.Location=new Point(Convert.ToInt32(mydialog.pcxloc/thescale), Convert.ToInt32(mydialog.pcyloc/thescale));
+                theguy.Location=new Point(Convert.ToInt32(mydialog.pcxloc/thescale)+200, Convert.ToInt32(mydialog.pcyloc/thescale)+200);
                 theguy.xlocation = mydialog.pcxloc;
                 theguy.ylocation = mydialog.pcyloc;
                 theguy.thelabel.Text = mydialog.pcname;
