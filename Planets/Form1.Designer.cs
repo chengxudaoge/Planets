@@ -41,6 +41,7 @@
             this.scale = new System.Windows.Forms.TextBox();
             this.clear = new System.Windows.Forms.Button();
             this.anniversary = new System.Windows.Forms.Label();
+            this.init = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
@@ -55,6 +56,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // addPlanet
@@ -141,11 +143,22 @@
             this.anniversary.Size = new System.Drawing.Size(0, 13);
             this.anniversary.TabIndex = 11;
             // 
+            // init
+            // 
+            this.init.Location = new System.Drawing.Point(625, 50);
+            this.init.Name = "init";
+            this.init.Size = new System.Drawing.Size(75, 23);
+            this.init.TabIndex = 12;
+            this.init.Text = "Init...";
+            this.init.UseVisualStyleBackColor = true;
+            this.init.Click += new System.EventHandler(this.init_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 345);
+            this.Controls.Add(this.init);
             this.Controls.Add(this.anniversary);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.label3);
@@ -177,6 +190,7 @@
         private System.Windows.Forms.TextBox scale;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Label anniversary;
+        private System.Windows.Forms.Button init;
     }
 }
 

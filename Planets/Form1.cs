@@ -49,9 +49,25 @@ namespace Planets
         public Form1()
         {
             InitializeComponent();
+            InitSim("info.xml");
+            
+        }
+        private void InitSim(string thefile)
+        {
+            Invalidate(); //clear screen
+            //clear planets from display
+            foreach (string aplanet in planetlist)
+            {
+                if (aplanet!=null){
+                    planetcomponent pc = this.Controls.Find(aplanet, true).FirstOrDefault() as planetcomponent;
+                    this.Controls.Remove(pc);
+                    planetcount--;
+                }
+            }
+            //read in new setup
             List<APlanet> planets;
             var serializer = new XmlSerializer(typeof(Info));
-            using (var reader = XmlReader.Create("info.xml"))
+            using (var reader = XmlReader.Create(thefile))
             {
                 Info info = (Info)serializer.Deserialize(reader);
                 planets = info.Planets;
@@ -62,16 +78,15 @@ namespace Planets
             scale.Text = thescale.ToString();
             foreach (APlanet aplanet in planets)
             {
-              planetcomponent pc= new planetcomponent(aplanet.mass, aplanet.xlocation, aplanet.ylocation, aplanet.xvelocity, aplanet.yvelocity);
+                planetcomponent pc = new planetcomponent(aplanet.mass, aplanet.xlocation, aplanet.ylocation, aplanet.xvelocity, aplanet.yvelocity);
                 pc.Name = aplanet.Name;
                 pc.labelname = pc.Name;
                 pc.Location = new Point(Convert.ToInt32(aplanet.xlocation / thescale) + 190, Convert.ToInt32(aplanet.ylocation / thescale) + 190);
                 planetlist[planetcount] = pc.Name;
                 this.Controls.Add(pc);
                 planetcount++;
+
             }
-
-
         }
         private Point MouseDownLocation;
 
@@ -161,6 +176,23 @@ namespace Planets
         private void clear_Click(object sender, EventArgs e)
         {
             Invalidate();
+        }
+
+        private void init_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Info Files|*.xml";
+            openFileDialog1.Title = "Select an Info File";
+
+            // Show the Dialog.
+            // If the user clicked OK in the dialog and
+            // a .xml file was selected, open it.
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string thefile = openFileDialog1.FileName;
+                InitSim(thefile);
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
