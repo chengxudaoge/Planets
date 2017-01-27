@@ -132,10 +132,8 @@
     <None Include="Resources\planet.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\two body.xml" />
     <None Include="bin\Debug\info.xml" />
-    <Content Include="Resources\info.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

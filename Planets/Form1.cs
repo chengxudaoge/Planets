@@ -54,6 +54,8 @@ namespace Planets
         }
         private void InitSim(string thefile)
         {
+            thetime = 0;
+            time.Text = "0";
             Invalidate(); //clear screen
             //clear planets from display
             foreach (string aplanet in planetlist)
@@ -64,6 +66,7 @@ namespace Planets
                     planetcount--;
                 }
             }
+            Array.Clear(planetlist, 0, 10);
             //read in new setup
             List<APlanet> planets;
             var serializer = new XmlSerializer(typeof(Info));
@@ -195,6 +198,26 @@ namespace Planets
 
         }
 
+        private void solar_Click(object sender, EventArgs e)
+        {
+            InitSim("info.xml");
+        }
+
+        private void twobody_Click(object sender, EventArgs e)
+        {
+            InitSim("two body.xml");
+        }
+
+        private void threebody_Click(object sender, EventArgs e)
+        {
+            InitSim("three body.xml");
+        }
+
+        private void timerspeed(object sender, EventArgs e)
+        {
+            timer1.Interval = Convert.ToInt32(simspeed.Text);
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -205,7 +228,7 @@ namespace Planets
             //theta = theta + 10 * Math.PI / 180.0;
             theinterval = Convert.ToDouble(interval.Text);
             double thescale = Convert.ToDouble(scale.Text);
-           thetime = thetime + theinterval;
+            thetime = thetime + theinterval;
             time.Text = (thetime/theinterval).ToString();
             foreach (string planetname in planetlist)
             {
