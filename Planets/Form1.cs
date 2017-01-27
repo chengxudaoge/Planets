@@ -158,6 +158,11 @@ namespace Planets
             Calculate();
         }
 
+        private void clear_Click(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -169,7 +174,7 @@ namespace Planets
             theinterval = Convert.ToDouble(interval.Text);
             double thescale = Convert.ToDouble(scale.Text);
            thetime = thetime + theinterval;
-            time.Text = thetime.ToString();
+            time.Text = (thetime/theinterval).ToString();
             foreach (string planetname in planetlist)
             {
                 double x = 0, y = 0;
@@ -216,13 +221,24 @@ namespace Planets
                     planet.xlocation = x + planet.xvelocity * theinterval;
                     planet.ylocation = y + planet.yvelocity * theinterval;
                     planet.Location = new Point(Convert.ToInt32(planet.xlocation / thescale) + 190, Convert.ToInt32(planet.ylocation / thescale) +190);
-                    //if (Math.Abs(planet.oldx - planet.Location.X) > 5 && Math.Abs(planet.oldy - planet.Location.Y)>5)
-                    //{
-                    //   DrawIt(planet.oldx, planet.oldy, Color.Green);
-                    //   planet.oldx = planet.Location.X;
-                    //   planet.oldy = planet.Location.Y;
-                    //}
-                    if (planet.pointcount == 100)
+
+                    if (planet.yearcount&&planet.Location.Y > 190 && planet.Location.X > 190)
+                    {
+                        planet.years++;
+                        anniversary.Text = planetname + " year is " + (thetime / theinterval/planet.years).ToString();
+                        planet.yearcount = false;
+                    }
+                    if (planet.Location.Y < 190  && planet.Location.X < 190)
+                    {
+                        planet.yearcount = true;
+                    }
+                        //if (Math.Abs(planet.oldx - planet.Location.X) > 5 && Math.Abs(planet.oldy - planet.Location.Y)>5)
+                        //{
+                        //   DrawIt(planet.oldx, planet.oldy, Color.Green);
+                        //   planet.oldx = planet.Location.X;
+                        //   planet.oldy = planet.Location.Y;
+                        //}
+                        if (planet.pointcount == 100)
                     {
                         Array.Copy(planet.apt, 1, planet.apt, 0, planet.pointcount-1);
                         planet.pointcount--;

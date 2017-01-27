@@ -22,6 +22,8 @@ namespace Planets
         public Int32 oldx, oldy;
         public Point[] apt = new Point[100];
         public int pointcount = 0;
+        public double years = -1;
+        public bool yearcount = true;
 
 
 

@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.scale = new System.Windows.Forms.TextBox();
+            this.clear = new System.Windows.Forms.Button();
+            this.anniversary = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // start
@@ -121,11 +123,31 @@
             this.scale.TabIndex = 8;
             this.scale.Text = "0.1";
             // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(625, 10);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(75, 23);
+            this.clear.TabIndex = 10;
+            this.clear.Text = "Clear";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
+            // 
+            // anniversary
+            // 
+            this.anniversary.AutoSize = true;
+            this.anniversary.Location = new System.Drawing.Point(488, 38);
+            this.anniversary.Name = "anniversary";
+            this.anniversary.Size = new System.Drawing.Size(0, 13);
+            this.anniversary.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 345);
+            this.ClientSize = new System.Drawing.Size(708, 345);
+            this.Controls.Add(this.anniversary);
+            this.Controls.Add(this.clear);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.scale);
             this.Controls.Add(this.label1);
@@ -153,6 +175,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox scale;
+        private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.Label anniversary;
     }
 }
 
