@@ -229,7 +229,7 @@ namespace Planets
             theinterval = Convert.ToDouble(interval.Text);
             double thescale = Convert.ToDouble(scale.Text);
             thetime = thetime + theinterval;
-            time.Text = (thetime/theinterval).ToString();
+            time.Text = (thetime/theinterval).ToString()+"/"+(thetime / theinterval/365.25).ToString();
             foreach (string planetname in planetlist)
             {
                 double x = 0, y = 0;

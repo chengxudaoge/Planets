@@ -46,7 +46,27 @@
 			<xvelocity>0</xvelocity>
 			<yvelocity>13720</yvelocity>
 		</planet>
-
+		<planet name="Saturn">
+			<mass>568.34e24</mass>
+			<xlocation>1352.55e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>10180</yvelocity>
+		</planet>
+		<planet name="Neptune">
+			<mass>102.414e24</mass>
+			<xlocation>4444.45e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>5500</yvelocity>
+		</planet>
+    <planet name="Pluto">
+			<mass>0.01013e24</mass>
+			<xlocation>4369.41e9</xlocation>
+			<ylocation>770.44e9</ylocation>
+			<xvelocity>-1059</xvelocity>
+			<yvelocity>6007</yvelocity>
+		</planet>
 
 	</planets>
 </info>
