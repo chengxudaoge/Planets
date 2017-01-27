@@ -65,7 +65,7 @@ namespace Planets
               planetcomponent pc= new planetcomponent(aplanet.mass, aplanet.xlocation, aplanet.ylocation, aplanet.xvelocity, aplanet.yvelocity);
                 pc.Name = aplanet.Name;
                 pc.labelname = pc.Name;
-                pc.Location = new Point(Convert.ToInt32(aplanet.xlocation / thescale) + 200, Convert.ToInt32(aplanet.ylocation / thescale) + 200);
+                pc.Location = new Point(Convert.ToInt32(aplanet.xlocation / thescale) + 190, Convert.ToInt32(aplanet.ylocation / thescale) + 190);
                 planetlist[planetcount] = pc.Name;
                 this.Controls.Add(pc);
                 planetcount++;
@@ -141,7 +141,7 @@ namespace Planets
         private void addPlanet_Click(object sender, EventArgs e)
         {
             planetcomponent pc = new planetcomponent();
-            pc.Location = new Point(200, 200);
+            pc.Location = new Point(190, 190);
             this.Controls.Add(pc);
             pc.Name = "Planet" + planetcount.ToString();
             pc.showmydialog(pc, EventArgs.Empty);
@@ -215,14 +215,14 @@ namespace Planets
                     planet.yvelocity = vy + ay * theinterval;
                     planet.xlocation = x + planet.xvelocity * theinterval;
                     planet.ylocation = y + planet.yvelocity * theinterval;
-                    planet.Location = new Point(Convert.ToInt32(planet.xlocation / thescale) + 200, Convert.ToInt32(planet.ylocation / thescale) + 200);
+                    planet.Location = new Point(Convert.ToInt32(planet.xlocation / thescale) + 190, Convert.ToInt32(planet.ylocation / thescale) +190);
                     //if (Math.Abs(planet.oldx - planet.Location.X) > 5 && Math.Abs(planet.oldy - planet.Location.Y)>5)
                     //{
                     //   DrawIt(planet.oldx, planet.oldy, Color.Green);
                     //   planet.oldx = planet.Location.X;
                     //   planet.oldy = planet.Location.Y;
                     //}
-                    planet.apt[planet.pointcount] = planet.Location;
+                    planet.apt[planet.pointcount] = new Point (planet.Location.X+10,planet.Location.Y+10);
                     planet.pointcount++;
                     Graphics graphics= this.CreateGraphics();
                     Pen myPen = new Pen(Color.Black);
