@@ -20,7 +20,7 @@ namespace Planets
         public double xlocation = 0;
         public double ylocation = 0;
         public Int32 oldx, oldy;
-        public Point[] apt = new Point[1000];
+        public Point[] apt = new Point[100];
         public int pointcount = 0;
 
 

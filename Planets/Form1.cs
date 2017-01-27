@@ -222,16 +222,23 @@ namespace Planets
                     //   planet.oldx = planet.Location.X;
                     //   planet.oldy = planet.Location.Y;
                     //}
+                    if (planet.pointcount == 100)
+                    {
+                        Array.Copy(planet.apt, 1, planet.apt, 0, planet.pointcount-1);
+                        planet.pointcount--;
+
+                    }
                     planet.apt[planet.pointcount] = new Point (planet.Location.X+10,planet.Location.Y+10);
                     planet.pointcount++;
                     Graphics graphics= this.CreateGraphics();
                     Pen myPen = new Pen(Color.Black);
                     Point [] thepoints = new Point[planet.pointcount];
                     Array.Copy(planet.apt, 0, thepoints, 0, planet.pointcount);
-                    if (planet.pointcount>2)
-                    graphics.DrawCurve(myPen, thepoints);
-
-
+                    if (planet.pointcount > 2)
+                    {
+                        graphics.DrawCurve(myPen, thepoints);
+                    }
+                    
                 }
             }
         }
