@@ -20,6 +20,11 @@ namespace Planets
         public double xlocation = 0;
         public double ylocation = 0;
         public Int32 oldx, oldy;
+        public Point[] apt = new Point[1000];
+        public int pointcount = 0;
+
+
+
 
         public string Labelname;
         public planetcomponent()
@@ -46,7 +51,7 @@ namespace Planets
             get { return Labelname; }
             set {
                 Labelname = value;               
-                thelabel.Text = Labelname;
+                thelabel.Text = Labelname.Substring(0,1);
                 }
         }
 
@@ -55,7 +60,6 @@ namespace Planets
         {
             int x = 0,y = 0;
             Graphics graphics = e.Graphics;
-            //Pen myPen = new Pen(Color.Black);
             //// Draw the button in the form of a circle
             //graphics.DrawEllipse(myPen, 0, 0, 100, 100);
             //myPen.Dispose();

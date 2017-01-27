@@ -34,11 +34,12 @@
             // thelabel
             // 
             this.thelabel.AutoSize = true;
-            this.thelabel.Location = new System.Drawing.Point(3, 0);
+            this.thelabel.BackColor = System.Drawing.Color.Red;
+            this.thelabel.Location = new System.Drawing.Point(3, 3);
             this.thelabel.Name = "thelabel";
-            this.thelabel.Size = new System.Drawing.Size(49, 13);
+            this.thelabel.Size = new System.Drawing.Size(16, 13);
             this.thelabel.TabIndex = 0;
-            this.thelabel.Text = "MyName";
+            this.thelabel.Text = "M";
             // 
             // planetcomponent
             // 
@@ -47,7 +48,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.thelabel);
             this.Name = "planetcomponent";
-            this.Size = new System.Drawing.Size(52, 25);
+            this.Size = new System.Drawing.Size(23, 23);
             this.DoubleClick += new System.EventHandler(this.showmydialog);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.planet_MyMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.planet_MyMouseMove);

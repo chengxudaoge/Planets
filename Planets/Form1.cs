@@ -70,6 +70,8 @@ namespace Planets
                 this.Controls.Add(pc);
                 planetcount++;
             }
+
+
         }
         private Point MouseDownLocation;
 
@@ -95,7 +97,10 @@ namespace Planets
             if (timer1.Enabled == true)
                 timer1.Enabled = false;
             else
+            { 
                 timer1.Enabled = true;
+           // DrawIt(300, 300, Color.Green);
+        }
             //double theta = 0;
             //int x=0, y=0;
             //while (true)
@@ -119,8 +124,10 @@ namespace Planets
             //System.Drawing.SolidBrush brush1 = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
            // graphics.FillEllipse(brush1, new System.Drawing.Rectangle(50, 50, 100, 100));
             System.Drawing.SolidBrush brush2 = new System.Drawing.SolidBrush(color);
-            graphics.FillEllipse(brush2, new System.Drawing.Rectangle(x, y,5, 5));
-          //  brush1.Dispose();
+            //graphics.FillEllipse(brush2, new System.Drawing.Rectangle(x, y,5, 5));
+//            graphics.FillEllipse(brush2, new System.Drawing.Rectangle(x, y,25, 25));
+            graphics.FillRectangle(brush2, new System.Drawing.Rectangle(0, 0,700, 700));
+            //  brush1.Dispose();
             brush2.Dispose();
             graphics.Dispose();
         }
@@ -153,6 +160,7 @@ namespace Planets
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             ////DrawIt(x, y, Color.White);
             //x = (int)(100 * Math.Cos(theta) + 90);
             //y = (int)(100 * Math.Sin(theta) + 90);
@@ -208,12 +216,21 @@ namespace Planets
                     planet.xlocation = x + planet.xvelocity * theinterval;
                     planet.ylocation = y + planet.yvelocity * theinterval;
                     planet.Location = new Point(Convert.ToInt32(planet.xlocation / thescale) + 200, Convert.ToInt32(planet.ylocation / thescale) + 200);
-                    if (Math.Abs(planet.oldx - planet.Location.X) > 5 && Math.Abs(planet.oldy - planet.Location.Y)>5)
-                    {
-                       DrawIt(planet.oldx, planet.oldy, Color.Green);
-                       planet.oldx = planet.Location.X;
-                       planet.oldy = planet.Location.Y;
-                    }
+                    //if (Math.Abs(planet.oldx - planet.Location.X) > 5 && Math.Abs(planet.oldy - planet.Location.Y)>5)
+                    //{
+                    //   DrawIt(planet.oldx, planet.oldy, Color.Green);
+                    //   planet.oldx = planet.Location.X;
+                    //   planet.oldy = planet.Location.Y;
+                    //}
+                    planet.apt[planet.pointcount] = planet.Location;
+                    planet.pointcount++;
+                    Graphics graphics= this.CreateGraphics();
+                    Pen myPen = new Pen(Color.Black);
+                    Point [] thepoints = new Point[planet.pointcount];
+                    Array.Copy(planet.apt, 0, thepoints, 0, planet.pointcount);
+                    if (planet.pointcount>2)
+                    graphics.DrawCurve(myPen, thepoints);
+
 
                 }
             }
