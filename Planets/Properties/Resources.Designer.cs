@@ -61,6 +61,35 @@ namespace Planets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;!--The planets--&gt;
+        ///&lt;info&gt;
+        ///	&lt;scale&gt;146e7&lt;/scale&gt;
+        ///	&lt;interval&gt;86400&lt;/interval&gt;
+        ///	&lt;planets&gt;
+        ///		&lt;planet name=&quot;Sun&quot;&gt;
+        ///			&lt;mass&gt;1.989e30&lt;/mass&gt;
+        ///			&lt;xlocation&gt;0&lt;/xlocation&gt;
+        ///			&lt;ylocation&gt;0&lt;/ylocation&gt;
+        ///			&lt;xvelocity&gt;0&lt;/xvelocity&gt;
+        ///			&lt;yvelocity&gt;0&lt;/yvelocity&gt;
+        ///		&lt;/planet&gt;
+        ///		&lt;planet name=&quot;Earth&quot;&gt;
+        ///			&lt;mass&gt;5.9724e24&lt;/mass&gt;
+        ///			&lt;xlocation&gt;147.09e9&lt;/xlocation&gt;
+        ///			&lt;ylocation&gt;0&lt;/ylocation&gt;
+        ///			&lt;xvelocity&gt;0&lt;/xvelocity&gt;
+        ///			&lt;yvelocity&gt;30290&lt;/yvelocity&gt;
+        ///		&lt;/planet&gt;
+        ///		&lt;planet [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string info {
+            get {
+                return ResourceManager.GetString("info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap planet {

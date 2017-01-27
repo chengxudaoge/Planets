@@ -39,6 +39,13 @@
 			<xvelocity>0</xvelocity>
 			<yvelocity>58980</yvelocity>
 		</planet>
+		<planet name="Jupiter">
+			<mass>1898.19e24</mass>
+			<xlocation>740.52e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>13720</yvelocity>
+		</planet>
 
 
 	</planets>

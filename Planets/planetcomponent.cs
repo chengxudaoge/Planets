@@ -19,6 +19,8 @@ namespace Planets
         public double yvelocity = 0;
         public double xlocation = 0;
         public double ylocation = 0;
+        public Int32 oldx, oldy;
+
         public string Labelname;
         public planetcomponent()
         {

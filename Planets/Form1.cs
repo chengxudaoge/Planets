@@ -22,6 +22,7 @@ namespace Planets
         double theinterval = 0.1;
         double thetime = 0;
         double thescale = 1;
+        Int32 oldx=0, oldy=0;
 
         public class APlanet
         {
@@ -118,7 +119,7 @@ namespace Planets
             //System.Drawing.SolidBrush brush1 = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
            // graphics.FillEllipse(brush1, new System.Drawing.Rectangle(50, 50, 100, 100));
             System.Drawing.SolidBrush brush2 = new System.Drawing.SolidBrush(color);
-            graphics.FillEllipse(brush2, new System.Drawing.Rectangle(x, y, 20, 20));
+            graphics.FillEllipse(brush2, new System.Drawing.Rectangle(x, y,5, 5));
           //  brush1.Dispose();
             brush2.Dispose();
             graphics.Dispose();
@@ -181,6 +182,7 @@ namespace Planets
                     y = planet.ylocation;
                     vx = planet.xvelocity;
                     vy = planet.yvelocity;
+                    
 
                     foreach (string otherplanetname in planetlist)
                     {
@@ -200,12 +202,18 @@ namespace Planets
  
                         }
                     }
+                 
                     planet.xvelocity = vx + ax * theinterval;
                     planet.yvelocity = vy + ay * theinterval;
                     planet.xlocation = x + planet.xvelocity * theinterval;
                     planet.ylocation = y + planet.yvelocity * theinterval;
                     planet.Location = new Point(Convert.ToInt32(planet.xlocation / thescale) + 200, Convert.ToInt32(planet.ylocation / thescale) + 200);
-                    DrawIt(planet.Location.X, planet.Location.Y, Color.Green);
+                    if (Math.Abs(planet.oldx - planet.Location.X) > 5 && Math.Abs(planet.oldy - planet.Location.Y)>5)
+                    {
+                       DrawIt(planet.oldx, planet.oldy, Color.Green);
+                       planet.oldx = planet.Location.X;
+                       planet.oldy = planet.Location.Y;
+                    }
 
                 }
             }
