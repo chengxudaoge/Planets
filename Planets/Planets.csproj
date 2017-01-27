@@ -132,6 +132,7 @@
     <None Include="Resources\planet.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\three body.xml" />
     <Content Include="bin\Debug\two body.xml" />
     <None Include="bin\Debug\info.xml" />
   </ItemGroup>
