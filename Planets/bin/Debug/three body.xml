@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--The planets-->
+<info>
+	<scale>1e9</scale>
+	<interval>1e4</interval>
+	<planets>
+		<planet name="1">
+			<mass>1e30</mass>
+			<xlocation>50e9</xlocation>
+			<ylocation>50e9</ylocation>
+			<xvelocity>20000</xvelocity>
+			<yvelocity>7000</yvelocity>
+		</planet>
+    <planet name="2">
+      <mass>1e30</mass>
+      <xlocation>200e9</xlocation>
+      <ylocation>50e9</ylocation>
+      <xvelocity>-7000</xvelocity>
+      <yvelocity>20000</yvelocity>
+    </planet>
+    <planet name="3">
+      <mass>1e30</mass>
+      <xlocation>125e9</xlocation>
+      <ylocation>180e9</ylocation>
+      <xvelocity>-20000</xvelocity>
+      <yvelocity>-7000</yvelocity>
+    </planet>
+  </planets>
+</info>
+			
+	

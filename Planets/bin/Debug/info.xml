@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--The planets-->
+<info>
+	<scale>146e7</scale>
+	<interval>86400</interval>
+	<planets>
+		<planet name="Sun">
+			<mass>1.989e30</mass>
+			<xlocation>0</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>0</yvelocity>
+		</planet>
+		<planet name="Earth">
+			<mass>5.9724e24</mass>
+			<xlocation>147.09e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>30290</yvelocity>
+		</planet>
+		<planet name="Mars">
+			<mass>0.64171e24</mass>
+			<xlocation>206.62e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>26500</yvelocity>
+		</planet>
+		<planet name="Venus">
+			<mass>4.8675e24</mass>
+			<xlocation>107.48e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>35260</yvelocity>
+		</planet>
+		<planet name="Mercury">
+			<mass>0.30111e24</mass>
+			<xlocation>46e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>58980</yvelocity>
+		</planet>
+		<planet name="Jupiter">
+			<mass>1898.19e24</mass>
+			<xlocation>740.52e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>13720</yvelocity>
+		</planet>
+		<planet name="Saturn">
+			<mass>568.34e24</mass>
+			<xlocation>1352.55e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>10180</yvelocity>
+		</planet>
+		<planet name="Neptune">
+			<mass>102.414e24</mass>
+			<xlocation>4444.45e9</xlocation>
+			<ylocation>0</ylocation>
+			<xvelocity>0</xvelocity>
+			<yvelocity>5500</yvelocity>
+		</planet>
+    <planet name="Pluto">
+			<mass>0.01013e24</mass>
+			<xlocation>4369.41e9</xlocation>
+			<ylocation>770.44e9</ylocation>
+			<xvelocity>-1059</xvelocity>
+			<yvelocity>6007</yvelocity>
+		</planet>
+
+	</planets>
+</info>
+			
+	
